@@ -23,10 +23,29 @@ padding: 0.5em 1em;
 $bnr = $_GET["bnr"];
 echo "<h1>iBrot-Bestellung</h1>";
 echo "<h2>Bestellnummer: $bnr </h2>";
+/*
+try {
+    $conn = new PDO("sqlsrv:server = tcp:gro-ibrot-dbsrv.database.windows.net,1433; Database = ibrot", "gro", "{your_password_here}");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
+
 // SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "gro", "pwd" => 'RSE1234567', "Database" => "ibrot", "LoginTimeout" => 30,
+$connectionInfo = array("UID" => "gro", "pwd" => "{your_password_here}", "Database" => "ibrot", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$serverName = "tcp:gro-ibrot-dbsrv.database.windows.net,1433";
+$conn = sqlsrv_connect($serverName, $connectionInfo);
+
+*/
+
+
+// SQL Server Extension Sample Code:
+$connectionInfo = array("UID" => "gro", "pwd" => 'RSE12345678!', "Database" => "ibrot", "LoginTimeout" => 30,
 "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:gro-ibrot-dbsrv.database.windows.net,1433";
+
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 /* Set up and execute the query. */
 $tsql = "SELECT * FROM Bestellposition WHERE BestellungID=$bnr";
